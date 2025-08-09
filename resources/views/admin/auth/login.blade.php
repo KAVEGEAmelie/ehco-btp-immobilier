@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion Admin - ECHO Immobilier</title>
+    <title>Connexion Admin - EHCO Immobilier</title>
     {{-- On ne charge PAS le CSS global ici pour éviter les conflits de thème --}}
 
     <style>
@@ -169,7 +169,7 @@
     <div class="admin-login-container">
         <div class="admin-login-card">
             <div class="admin-logo">
-                <h1>ECHO</h1>
+                <h1>EHCO</h1>
                 <p>Espace d'Administration</p>
             </div>
 
@@ -194,7 +194,7 @@
                            required
                            autocomplete="email"
                            autofocus
-                           placeholder="admin@echo.com">
+                           placeholder="admin@ehco.com">
                 </div>
 
                 <div class="form-group">

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-left">
-                <p class="copyright">&copy; {{ date('Y') }} ECHO Immobilier. Tous droits réservés.</p>
+                <p class="copyright">&copy; {{ date('Y') }} EHCO Immobilier. Tous droits réservés.</p>
             </div>
             
             <div class="footer-center">

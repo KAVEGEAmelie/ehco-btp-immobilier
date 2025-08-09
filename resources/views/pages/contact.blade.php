@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contactez-nous - ' . ($settings['site_name'] ?? 'ECHO Immobilier'))
+@section('title', 'Contactez-nous - ' . ($settings['site_name'] ?? 'EHCO Immobilier'))
 
 @section('content')
 <div class="contact-page">

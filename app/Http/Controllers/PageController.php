@@ -21,8 +21,8 @@ class PageController extends Controller
         
         // Valeurs par défaut
         $settings = [
-            'site_name' => 'ECHO Immobilier',
-            'contact_email' => 'contact@echo-immobilier.com',
+            'site_name' => 'EHCO Immobilier',
+            'contact_email' => 'contact@ehco-immobilier.com',
             'contact_phone' => '01 23 45 67 89',
             'address' => "123 Rue de l'Immobilier\n75001 Paris, France",
             'description' => 'Votre partenaire de confiance pour tous vos projets immobiliers.',

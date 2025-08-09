@@ -23,7 +23,7 @@
             </div>
 
             <h1 class="hero-title animate-slide-up">
-                <span class="title-main">ECHO BTP</span>
+                <span class="title-main">EHCO BTP</span>
                 <span class="title-sub">Votre Partenaire Immobilier de Confiance</span>
             </h1>
 

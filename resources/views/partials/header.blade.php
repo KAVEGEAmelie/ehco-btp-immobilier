@@ -1,6 +1,6 @@
 <header class="header" id="header">
     <div class="container">
-        <a href="{{ route('home') }}" class="logo">ECHO</a>
+        <a href="{{ route('home') }}" class="logo">EHCO</a>
 
         <!-- Menu burger pour mobile -->
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
