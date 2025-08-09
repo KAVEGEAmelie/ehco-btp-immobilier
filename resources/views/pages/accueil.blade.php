@@ -232,7 +232,7 @@
                         <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 </a>
-                <a href="tel:+2250123456789" class="btn-secondary-large">
+                <a href="tel:+22896530026/71329181" class="btn-secondary-large">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M22 16.92V19.92C22 20.52 21.52 21 20.92 21C10.93 21 3 13.07 3 3.08C3 2.48 3.48 2 4.08 2H7.09C7.69 2 8.17 2.48 8.17 3.08C8.17 4.43 8.43 5.72 8.91 6.91C9.1 7.37 8.95 7.91 8.55 8.23L6.84 9.46C8.21 12.43 10.57 14.78 13.54 16.16L14.77 14.45C15.09 14.05 15.63 13.9 16.09 14.09C17.28 14.57 18.57 14.83 19.92 14.83C20.52 14.83 21 15.31 21 15.91V16.92H22Z" stroke="currentColor" stroke-width="2"/>
                     </svg>

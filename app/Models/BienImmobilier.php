@@ -61,4 +61,12 @@ class BienImmobilier extends Model
         $photo = $this->photos()->first();
         return $photo ? asset('storage/' . $photo->chemin) : asset('images/default-property.svg');
     }
+
+    /**
+     * Alias pour getPhotoUrlAttribute - utilisé dans les templates.
+     */
+    public function getImagePrincipaleAttribute()
+    {
+        return $this->getPhotoUrlAttribute();
+    }
 }
