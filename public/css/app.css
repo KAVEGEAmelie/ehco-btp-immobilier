@@ -1,0 +1,495 @@
+/* -- Variables de couleur pour un thème unifié -- */
+:root {
+    --couleur-fond: #1a1a1a;
+    --couleur-surface: #2c2c2c;
+    --couleur-texte: #e1e1e1;
+    --couleur-primaire: #00aaff;
+    --couleur-bordure: #444;
+}
+
+/* === AJOUTER CE CODE À LA FIN DE VOTRE app.css === */
+
+/* -- Boutons stylés -- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn-primaire {
+    background-color: var(--couleur-primaire);
+    color: #fff;
+}
+.btn-primaire:hover {
+    background-color: #fff;
+    color: var(--couleur-primaire);
+    border-color: var(--couleur-primaire);
+}
+
+.btn-secondaire {
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+.btn-secondaire:hover {
+    background-color: #fff;
+    color: var(--couleur-fond);
+}
+
+
+/* -- Animations -- */
+@keyframes slideIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* -- Section Héro -- */
+.hero {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.hero-content {
+    position: relative; /* Pour être au-dessus de l'overlay */
+    z-index: 2;
+}
+.hero-title {
+    font-size: 6rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin: 0;
+    color: #fff;
+    animation: slideIn 1s ease-out forwards;
+}
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin: 1rem 0 2rem 0;
+    opacity: 0;
+    animation: slideIn 1s 0.3s ease-out forwards; /* 0.3s de délai */
+}
+.hero .btn {
+    opacity: 0;
+    animation: slideIn 1s 0.6s ease-out forwards; /* 0.6s de délai */
+}
+
+
+/* -- Titres de Section -- */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--couleur-primaire);
+}
+
+/* -- Section Services -- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.service-card {
+    background-color: var(--couleur-surface);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    border-bottom: 4px solid transparent;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--couleur-primaire);
+}
+
+/* -- Section Biens à la Une -- */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+.property-card {
+    background-color: var(--couleur-surface);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.property-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+.property-image {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.property-price {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--couleur-primaire);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+.property-details {
+    padding: 1.5rem;
+}
+.property-details h3 {
+    margin-bottom: 0.5rem;
+}
+.property-details p {
+    margin: 0;
+    color: #ccc;
+}
+
+
+/* -- Section CTA -- */
+.cta {
+    background-color: var(--couleur-primaire);
+    text-align: center;
+    padding: 4rem 0;
+    margin-top: 4rem;
+}
+.cta h2 {
+    font-size: 2.5rem;
+}
+.cta p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* -- Style de base -- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--couleur-fond);
+    color: var(--couleur-texte);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px; /* Compensation pour le header fixe */
+}
+
+a {
+    color: var(--couleur-primaire);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #fff;
+}
+
+h1, h2, h3 {
+    color: #fff;
+    margin-top: 0;
+}
+
+/* -- Structure -- */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 2rem 0;
+}
+
+main.container {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    min-height: 70vh; /* Pour que le footer reste en bas */
+    flex: 1; /* Permet au contenu principal de prendre l'espace disponible */
+}
+
+/* -- Header -- */
+.header {
+    background-color: var(--couleur-surface);
+    border-bottom: 1px solid var(--couleur-bordure);
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.header.hidden {
+    transform: translateY(-100%);
+}
+
+.header.scrolled {
+    background-color: rgba(44, 44, 44, 0.95);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--couleur-primaire);
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: #fff;
+}
+
+/* Menu burger (caché par défaut sur desktop) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 24px;
+    justify-content: space-between;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--couleur-texte);
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Navigation */
+.nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--couleur-texte);
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link:hover {
+    color: var(--couleur-primaire);
+    transform: translateY(-2px);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--couleur-primaire);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* -- Footer -- */
+footer {
+    background-color: var(--couleur-surface);
+    border-top: 1px solid var(--couleur-bordure);
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    margin-top: auto; /* Pousse le footer vers le bas */
+}
+footer .container {
+    padding: 0;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablettes */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .services-grid,
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Mobiles */
+@media (max-width: 480px) {
+    /* Header mobile */
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--couleur-surface);
+        border-top: 1px solid var(--couleur-bordure);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
+    }
+    
+    .nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        max-height: 300px;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+    }
+    
+    .nav-item {
+        text-align: center;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid var(--couleur-bordure);
+    }
+    
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+    
+    /* Ajustement du padding pour le header fixe */
+    body {
+        padding-top: 70px;
+    }
+    
+    /* Hero section mobile */
+    .hero {
+        height: 60vh;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+        letter-spacing: 2px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin: 0.5rem 0 1.5rem 0;
+    }
+    
+    .container {
+        width: 95%;
+        padding: 1rem 0;
+    }
+    
+    main.container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    /* Boutons mobile */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Cards mobile */
+    .property-card,
+    .service-card {
+        margin-bottom: 1rem;
+    }
+    
+    /* CTA mobile */
+    .cta h2 {
+        font-size: 2rem;
+    }
+    
+    .cta p {
+        font-size: 1rem;
+    }
+}
+
+
