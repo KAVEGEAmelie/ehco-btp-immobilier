@@ -213,4 +213,136 @@
         </div>
     </div>
 </div>
+
+<script>
+// Variables globales pour le lightbox
+let currentLightboxIndex = 0;
+let photos = [];
+
+// Fonction pour exposer currentLightboxIndex globalement
+window.setLightboxIndex = function(index) {
+    currentLightboxIndex = index;
+};
+
+// Fonctions globales du lightbox
+function openLightbox(index) {
+    // Récupérer les photos depuis le modal actuel
+    const modalPhotos = window.currentModalPhotos || [];
+    photos = modalPhotos;
+    currentLightboxIndex = index;
+    
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    
+    if (photos.length > 0 && photos[index]) {
+        lightboxImage.src = photos[index];
+        updateLightboxCounter();
+        updateLightboxThumbnails();
+        updateLightboxNavigation();
+        
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function previousImage() {
+    if (currentLightboxIndex > 0) {
+        currentLightboxIndex--;
+    } else {
+        currentLightboxIndex = photos.length - 1;
+    }
+    updateLightboxImage();
+}
+
+function nextImage() {
+    if (currentLightboxIndex < photos.length - 1) {
+        currentLightboxIndex++;
+    } else {
+        currentLightboxIndex = 0;
+    }
+    updateLightboxImage();
+}
+
+function goToImage(index) {
+    currentLightboxIndex = index;
+    updateLightboxImage();
+}
+
+function updateLightboxImage() {
+    const lightboxImage = document.getElementById('lightboxImage');
+    if (photos[currentLightboxIndex]) {
+        lightboxImage.src = photos[currentLightboxIndex];
+        updateLightboxCounter();
+        updateLightboxThumbnails();
+    }
+}
+
+function updateLightboxCounter() {
+    const currentPhoto = document.getElementById('lightboxCurrentPhoto');
+    const totalPhotos = document.getElementById('lightboxTotalPhotos');
+    if (currentPhoto && totalPhotos) {
+        currentPhoto.textContent = currentLightboxIndex + 1;
+        totalPhotos.textContent = photos.length;
+    }
+}
+
+function updateLightboxThumbnails() {
+    const container = document.getElementById('lightboxThumbnails');
+    
+    if (photos.length > 1) {
+        container.style.display = 'flex';
+        container.innerHTML = '';
+        
+        photos.forEach((photoUrl, index) => {
+            const thumbnail = document.createElement('div');
+            thumbnail.className = `lightbox-thumbnail ${index === currentLightboxIndex ? 'active' : ''}`;
+            thumbnail.onclick = () => goToImage(index);
+            
+            const img = document.createElement('img');
+            img.src = photoUrl;
+            img.alt = `Photo ${index + 1}`;
+            
+            thumbnail.appendChild(img);
+            container.appendChild(thumbnail);
+        });
+    } else {
+        container.style.display = 'none';
+    }
+}
+
+function updateLightboxNavigation() {
+    const prevBtn = document.querySelector('.lightbox-prev');
+    const nextBtn = document.querySelector('.lightbox-next');
+    
+    if (photos.length > 1) {
+        prevBtn.style.display = 'block';
+        nextBtn.style.display = 'block';
+    } else {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+    }
+}
+
+// Gestion du clavier
+document.addEventListener('keydown', function(e) {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+        if (e.key === 'ArrowLeft') {
+            previousImage();
+        }
+        if (e.key === 'ArrowRight') {
+            nextImage();
+        }
+    }
+});
+</script>
 @endsection

@@ -14,8 +14,19 @@
     </main>
 
     @include('partials.footer')
-    
+
     {{-- Inclusion du JavaScript --}}
     @vite(['resources/js/app.js'])
+
+    {{-- AJOUTER CE CODE AVANT LA FIN DU BODY DANS VOTRE LAYOUT --}}
+
+<div class="lightbox" id="lightbox" style="display: none;">
+    <button class="lightbox-close">&times;</button>
+    <button class="lightbox-prev">&#10094;</button>
+    <button class="lightbox-next">&#10095;</button>
+    <div class="lightbox-content">
+        <img src="" class="lightbox-image" alt="Image agrandie">
+    </div>
+</div>
 </body>
 </html>

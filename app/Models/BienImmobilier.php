@@ -56,9 +56,9 @@ class BienImmobilier extends Model
     /**
      * Obtenir l'URL de la photo principale ou une image par défaut.
      */
-    public function getImagePrincipaleAttribute()
+    public function getPhotoUrlAttribute()
     {
-        $photo = $this->photoPrincipale();
-        return $photo ? asset('storage/' . $photo->chemin) : asset('images/maison-default.jpg');
+        $photo = $this->photos()->first();
+        return $photo ? asset('storage/' . $photo->chemin) : asset('images/default-property.svg');
     }
 }

@@ -37,7 +37,7 @@
             @endif
         @else
             <div class="no-photos">
-                <img src="{{ asset('images/maison-default.jpg') }}" alt="{{ $bien->titre }}">
+                <img src="{{ asset('images/default-property.svg') }}" alt="Aucune photo disponible">
                 <p>Aucune photo disponible</p>
             </div>
         @endif
@@ -175,8 +175,11 @@
 </div>
 
 <script>
-let currentLightboxIndex = 0;
-let photos = [];
+// Variables pour ce modal spécifique
+let currentModalPhotos = @json($bien->photos->pluck('url'));
+
+// Exposer les photos globalement pour le lightbox
+window.currentModalPhotos = currentModalPhotos;
 
 function changePhoto(photoUrl, photoNumber) {
     document.getElementById('mainPhoto').src = photoUrl;
@@ -185,115 +188,11 @@ function changePhoto(photoUrl, photoNumber) {
     // Mettre à jour les thumbnails actifs
     document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
     document.querySelectorAll('.thumbnail')[photoNumber - 1].classList.add('active');
-}
-
-function openLightbox(index) {
-    // Récupérer les photos depuis le modal
-    photos = @json($bien->photos->pluck('url'));
-    currentLightboxIndex = index;
     
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    
-    if (photos.length > 0) {
-        lightboxImage.src = photos[index];
-        updateLightboxCounter();
-        updateLightboxThumbnails();
-        updateLightboxNavigation();
-        
-        lightbox.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+    // Mettre à jour l'index pour le lightbox
+    const photoIndex = currentModalPhotos.findIndex(url => url === photoUrl);
+    if (photoIndex !== -1 && window.setLightboxIndex) {
+        window.setLightboxIndex(photoIndex);
     }
 }
-
-function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    lightbox.style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-function previousImage() {
-    if (currentLightboxIndex > 0) {
-        currentLightboxIndex--;
-    } else {
-        currentLightboxIndex = photos.length - 1;
-    }
-    updateLightboxImage();
-}
-
-function nextImage() {
-    if (currentLightboxIndex < photos.length - 1) {
-        currentLightboxIndex++;
-    } else {
-        currentLightboxIndex = 0;
-    }
-    updateLightboxImage();
-}
-
-function goToImage(index) {
-    currentLightboxIndex = index;
-    updateLightboxImage();
-}
-
-function updateLightboxImage() {
-    const lightboxImage = document.getElementById('lightboxImage');
-    lightboxImage.src = photos[currentLightboxIndex];
-    updateLightboxCounter();
-    updateLightboxThumbnails();
-}
-
-function updateLightboxCounter() {
-    document.getElementById('lightboxCurrentPhoto').textContent = currentLightboxIndex + 1;
-    document.getElementById('lightboxTotalPhotos').textContent = photos.length;
-}
-
-function updateLightboxThumbnails() {
-    const container = document.getElementById('lightboxThumbnails');
-    
-    if (photos.length > 1) {
-        container.style.display = 'flex';
-        container.innerHTML = '';
-        
-        photos.forEach((photoUrl, index) => {
-            const thumbnail = document.createElement('div');
-            thumbnail.className = `lightbox-thumbnail ${index === currentLightboxIndex ? 'active' : ''}`;
-            thumbnail.onclick = () => goToImage(index);
-            
-            const img = document.createElement('img');
-            img.src = photoUrl;
-            img.alt = `Photo ${index + 1}`;
-            
-            thumbnail.appendChild(img);
-            container.appendChild(thumbnail);
-        });
-    } else {
-        container.style.display = 'none';
-    }
-}
-
-function updateLightboxNavigation() {
-    const prevBtn = document.querySelector('.lightbox-prev');
-    const nextBtn = document.querySelector('.lightbox-next');
-    
-    if (photos.length > 1) {
-        prevBtn.style.display = 'block';
-        nextBtn.style.display = 'block';
-    } else {
-        prevBtn.style.display = 'none';
-        nextBtn.style.display = 'none';
-    }
-}
-
-// Fermer avec la touche Echap
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeLightbox();
-    }
-    if (e.key === 'ArrowLeft') {
-        previousImage();
-    }
-    if (e.key === 'ArrowRight') {
-        nextImage();
-    }
-});
 </script>
