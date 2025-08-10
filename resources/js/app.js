@@ -78,6 +78,110 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // ===== EFFET LUMINEUX SUR LE LOGO =====
+    const logo = document.querySelector('.logo');
+    if (logo) {
+        logo.addEventListener('click', function(e) {
+            // Ajouter la classe pour l'animation
+            this.classList.add('clicked');
+            
+            // Créer un effet de particules lumineuses
+            createGlowParticles(e);
+            
+            // Retirer la classe après l'animation
+            setTimeout(() => {
+                this.classList.remove('clicked');
+            }, 800);
+        });
+        
+        // Fonction pour créer des particules lumineuses
+        function createGlowParticles(e) {
+            const rect = logo.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // Créer 12 particules pour un effet plus dense
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'glow-particle';
+                
+                // Position initiale au centre du logo
+                const angle = (i * 30) * (Math.PI / 180); // 30 degrés entre chaque particule
+                const distance = 80 + Math.random() * 40; // Distance variable
+                const size = 3 + Math.random() * 3; // Taille variable
+                
+                particle.style.cssText = `
+                    position: fixed;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: radial-gradient(circle, #00aaff, rgba(0, 170, 255, 0.3));
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 9999;
+                    left: ${centerX}px;
+                    top: ${centerY}px;
+                    opacity: 1;
+                    transform: translate(-50%, -50%);
+                    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    box-shadow: 0 0 10px #00aaff, 0 0 20px rgba(0, 170, 255, 0.5);
+                `;
+                
+                document.body.appendChild(particle);
+                
+                // Animer la particule avec un délai aléatoire
+                setTimeout(() => {
+                    const endX = centerX + Math.cos(angle) * distance;
+                    const endY = centerY + Math.sin(angle) * distance;
+                    const randomOffset = (Math.random() - 0.5) * 40;
+                    
+                    particle.style.left = `${endX + randomOffset}px`;
+                    particle.style.top = `${endY + randomOffset}px`;
+                    particle.style.opacity = '0';
+                    particle.style.transform = 'translate(-50%, -50%) scale(0)';
+                    particle.style.filter = 'blur(2px)';
+                }, 10 + i * 20); // Délai progressif pour chaque particule
+                
+                // Supprimer la particule après l'animation
+                setTimeout(() => {
+                    if (document.body.contains(particle)) {
+                        document.body.removeChild(particle);
+                    }
+                }, 1000);
+            }
+            
+            // Créer un effet d'onde circulaire
+            const wave = document.createElement('div');
+            wave.style.cssText = `
+                position: fixed;
+                left: ${centerX}px;
+                top: ${centerY}px;
+                width: 0;
+                height: 0;
+                border: 2px solid rgba(0, 170, 255, 0.6);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                z-index: 9998;
+                transition: all 0.6s ease-out;
+            `;
+            
+            document.body.appendChild(wave);
+            
+            setTimeout(() => {
+                wave.style.width = '150px';
+                wave.style.height = '150px';
+                wave.style.opacity = '0';
+                wave.style.borderWidth = '1px';
+            }, 10);
+            
+            setTimeout(() => {
+                if (document.body.contains(wave)) {
+                    document.body.removeChild(wave);
+                }
+            }, 600);
+        }
+    }
     
     // ===== SMOOTH SCROLLING POUR LES LIENS D'ANCRAGE =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
