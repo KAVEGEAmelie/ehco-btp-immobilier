@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fond avec dégradé -->
+  <rect width="32" height="32" rx="6" fill="url(#grad1)"/>
+  
+  <!-- Icône maison stylisée -->
+  <path d="M8 18L16 10L24 18V26C24 26.6 23.6 27 23 27H20V22C20 21.4 19.6 21 19 21H13C12.4 21 12 21.4 12 22V27H9C8.4 27 8 26.6 8 26V18Z" fill="white" opacity="0.9"/>
+  
+  <!-- Toit de la maison -->
+  <path d="M6 18L16 8L26 18L24 16L16 8L8 16L6 18Z" fill="white" opacity="0.7"/>
+  
+  <!-- Détail fenêtre -->
+  <rect x="14" y="16" width="4" height="3" rx="0.5" fill="url(#grad1)" opacity="0.6"/>
+  
+  <!-- Lettres EHCO stylisées -->
+  <text x="16" y="30" font-family="Arial, sans-serif" font-size="4" font-weight="bold" text-anchor="middle" fill="white" opacity="0.8">EHCO</text>
+</svg>

@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminBienController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,10 @@ Route::get('/', [PageController::class, 'accueil'])->name('home');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/contact/bien/{bien}', [ContactController::class, 'contactBien'])->name('contact.bien');
+
+// Routes de test d'email
+Route::get('/test-email', [TestEmailController::class, 'index'])->name('test.email');
+Route::post('/test-email', [TestEmailController::class, 'send'])->name('test.email.send');
 
 // Routes pour les Biens Immobiliers (nouvelle version)
 Route::get('/biens', [BienController::class, 'index'])->name('biens.index');
