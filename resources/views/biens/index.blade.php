@@ -74,7 +74,7 @@
                     @foreach($biens as $bien)
                         <div class="bien-card" data-bien-id="{{ $bien->id }}">
                             <div class="bien-image">
-                                <img src="{{ $bien->image_principale }}" alt="{{ $bien->titre }}" loading="lazy">
+                                <img src="{{ $bien->image_principale }}" alt="{{ $bien->titre }}" loading="lazy" onclick="openBienLightbox({{ $bien->id }})" style="cursor: pointer;" title="Cliquer pour agrandir">
                                 <div class="bien-prix">{{ $bien->prix_format }}</div>
                                 <div class="bien-status">
                                     @if($bien->disponible)
@@ -82,6 +82,15 @@
                                     @else
                                         <span class="status-vendu">Vendu</span>
                                     @endif
+                                </div>
+                                <!-- Icône pour indiquer que l'image est cliquable -->
+                                <div class="zoom-indicator">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                        <circle cx="11" cy="11" r="8" stroke="white" stroke-width="2"/>
+                                        <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2"/>
+                                        <line x1="11" y1="8" x2="11" y2="14" stroke="white" stroke-width="2"/>
+                                        <line x1="8" y1="11" x2="14" y2="11" stroke="white" stroke-width="2"/>
+                                    </svg>
                                 </div>
                             </div>
 
@@ -219,6 +228,38 @@
 let currentLightboxIndex = 0;
 let photos = [];
 
+// Fonction pour ouvrir directement la lightbox d'un bien depuis la page principale
+function openBienLightbox(bienId) {
+    // Faire une requête AJAX pour récupérer les photos du bien
+    fetch(`/biens/${bienId}/photos`, {
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success && data.photos.length > 0) {
+            photos = data.photos;
+            currentLightboxIndex = 0;
+            
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            
+            lightboxImage.src = photos[0];
+            updateLightboxCounter();
+            updateLightboxThumbnails();
+            updateLightboxNavigation();
+            
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    })
+    .catch(error => {
+        console.error('Erreur lors du chargement des photos:', error);
+    });
+}
+
 // Fonction pour exposer currentLightboxIndex globalement
 window.setLightboxIndex = function(index) {
     currentLightboxIndex = index;
@@ -226,8 +267,14 @@ window.setLightboxIndex = function(index) {
 
 // Fonctions globales du lightbox
 function openLightbox(index) {
-    // Récupérer les photos depuis le modal actuel
-    const modalPhotos = window.currentModalPhotos || [];
+    // Récupérer les photos depuis le modal actuel ou la variable globale
+    const modalPhotos = window.currentModalPhotos || photos || [];
+    
+    if (modalPhotos.length === 0) {
+        console.error('Aucune photo disponible pour la lightbox');
+        return;
+    }
+    
     photos = modalPhotos;
     currentLightboxIndex = index;
     

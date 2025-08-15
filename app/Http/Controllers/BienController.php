@@ -52,4 +52,19 @@ class BienController extends Controller
 
         return view('biens.show', compact('bien'));
     }
+
+    /**
+     * Récupérer les photos d'un bien via AJAX pour la lightbox.
+     */
+    public function getPhotos(BienImmobilier $bien)
+    {
+        $bien->load('photos');
+        
+        $photos = $bien->photos->pluck('url')->toArray();
+        
+        return response()->json([
+            'success' => true,
+            'photos' => $photos
+        ]);
+    }
 }

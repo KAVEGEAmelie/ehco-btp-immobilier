@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'EHCO BTP - Votre Expert Immobilier')
+@section('title', 'EHCO Immobilier - Votre Expert Immobilier')
 
 @section('content')
 
@@ -23,7 +23,7 @@
             </div>
 
             <h1 class="hero-title animate-slide-up">
-                <span class="title-main">EHCO BTP</span>
+                <span class="title-main">EHCO Immobilier</span>
                 <span class="title-sub">Votre Partenaire Immobilier de Confiance</span>
             </h1>
 
@@ -75,7 +75,7 @@
     <div class="container">
         <div class="section-header">
             <div class="section-badge">Nos Services</div>
-            <h2 class="section-title">Pourquoi Choisir EHCO BTP ?</h2>
+            <h2 class="section-title">Pourquoi Choisir EHCO Immobilier ?</h2>
             <p class="section-description">
                 Une expertise reconnue au service de vos ambitions immobilières
             </p>

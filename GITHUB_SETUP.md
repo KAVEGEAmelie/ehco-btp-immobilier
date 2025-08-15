@@ -6,7 +6,7 @@
 2. Cliquez sur le bouton "+" en haut à droite → "New repository"
 3. Configurez le repository :
    - **Repository name** : `ehco-btp-immobilier` (ou le nom de votre choix)
-   - **Description** : `🏠 EHCO BTP - Plateforme immobilière moderne avec Laravel 11`
+   - **Description** : `🏠 EHCO Immobilier - Plateforme immobilière moderne avec Laravel 11`
    - **Visibilité** : Public ou Private selon votre préférence
    - ⚠️ **N'initialisez PAS** avec README, .gitignore ou licence (nous avons déjà tout configuré)
 4. Cliquez sur "Create repository"

@@ -1,8 +1,8 @@
-# 🏠 EHCO BTP - Plateforme Immobilière
+# 🏠 EHCO Immobilier - Plateforme Immobilière
 
 ## 📋 Description du Projet
 
-EHCO BTP est une plateforme immobilière moderne développée avec Laravel 11, offrant une expérience utilisateur complète pour la recherche, la consultation et la gestion de biens immobiliers.
+EHCO Immobilier est une plateforme immobilière moderne développée avec Laravel 11, offrant une expérience utilisateur complète pour la recherche, la consultation et la gestion de biens immobiliers.
 
 ## ✨ Fonctionnalités Principales
 
@@ -49,8 +49,8 @@ EHCO BTP est une plateforme immobilière moderne développée avec Laravel 11, o
 
 1. **Cloner le repository**
 ```bash
-git clone https://github.com/votre-username/ehco-btp.git
-cd ehco-btp
+git clone https://github.com/votre-username/ehco-immobilier.git
+cd ehco-immobilier
 ```
 
 2. **Installer les dépendances PHP**
@@ -75,7 +75,7 @@ Modifier le fichier `.env` avec vos paramètres PostgreSQL :
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
-DB_DATABASE=ehco_btp
+DB_DATABASE=ehco_immobilier
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
 ```
@@ -214,7 +214,7 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 ## 📞 Contact
 
-**EHCO BTP** - Expert Immobilier Certifié
+**EHCO Immobilier** - Expert Immobilier Certifié
 
 - 📧 Email : ehcobtp@gmail.com
 - 📱 Téléphone : +225 01 23 45 67 89
@@ -222,4 +222,4 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 ---
 
-**Développé avec ❤️ par l'équipe EHCO BTP**
+**Développé avec ❤️ par l'équipe EHCO Immobilier**

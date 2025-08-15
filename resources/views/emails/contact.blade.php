@@ -55,7 +55,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>🏢 EHCO BTP - Nouveau Message</h1>
+        <h1>🏢 EHCO Immobilier - Nouveau Message</h1>
         <p>Vous avez reçu un nouveau message depuis votre site immobilier</p>
     </div>
     
@@ -94,7 +94,7 @@
     </div>
     
     <div class="footer">
-        <p><strong>EHCO BTP - Solutions Immobilières</strong></p>
+        <p><strong>EHCO Immobilier - Solutions Immobilières</strong></p>
         <p>Ce message a été envoyé automatiquement depuis votre site web</p>
         <p>Pour répondre, utilisez directement l'adresse email : {{ $contactData['email'] }}</p>
     </div>
